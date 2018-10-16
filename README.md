@@ -16,9 +16,7 @@
 
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
 
-A quiz application written in the web
-
-![banner][banner]
+A webapp for iseries-api
 
 ## Features
 
@@ -73,4 +71,3 @@ SOFTWARE.
 [buymeacoffee]: https://www.buymeacoffee.com/timmo
 [CONTRIBUTING]: https://github.com/timmo001/iseries-webapp/blob/master/.github/CONTRIBUTING.md
 [CODE_OF_CONDUCT]: https://github.com/timmo001/iseries-webapp/blob/master/.github/CODE_OF_CONDUCT.md
-[banner]: https://raw.githubusercontent.com/timmo001/iseries-webapp/master/src/resources/banner.png
