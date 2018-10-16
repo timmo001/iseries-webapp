@@ -3,7 +3,6 @@
 [![GitHub Release](https://img.shields.io/github/release/timmo001/iseries-webapp.svg)](https://github.com/timmo001/iseries-webapp/releases)
 [![License](https://img.shields.io/github/license/timmo001/iseries-webapp.svg)](https://github.com/timmo001/iseries-webapp/blob/master/LICENSE.md)
 [![pipeline status](https://gitlab.com/timmo/iseries-webapp/badges/master/pipeline.svg)](https://gitlab.com/timmo/iseries-webapp/commits/master)
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/timmo001/iseries-webapp.svg?columns=To%20Do,On%20Hold,In%20Progress,Done)](https://waffle.io/timmo001/iseries-webapp)
 
 [![Docker Version][version-shield]][microbadger]
 [![Docker Layers][layers-shield]][microbadger]
