@@ -52,7 +52,7 @@ const styles = theme => ({
     flexBasis: '50%',
   },
   margin: {
-    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit * 2}px`
+    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit}px`
   },
   header: {
     padding: `0 ${theme.spacing.unit * 2}px`
@@ -63,10 +63,10 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hostname: '',
-      username: '',
-      password: '',
-      command: '',
+      hostname: localStorage.getItem('hostname') || '',
+      username: localStorage.getItem('username') || '',
+      password: localStorage.getItem('password') || '',
+      command: localStorage.getItem('command') || '',
       showPassword: false,
       loading: false,
       success: false
@@ -84,7 +84,8 @@ class Main extends Component {
         hostname: process.env.REACT_APP_SERVER_HOSTNAME || this.state.hostname,
         username: process.env.REACT_APP_SERVER_USERNAME || this.state.username,
         password: process.env.REACT_APP_SERVER_PASSWORD || this.state.password,
-        command: this.state.command
+        command: this.state.command,
+        get_columns: true
       })
       .retry(2)
       .timeout({
@@ -93,7 +94,25 @@ class Main extends Component {
       })
       .then(res => {
         if (res.status === 200) {
-          this.setState({ data: res.body });
+          localStorage.setItem('hostname', this.state.hostname);
+          localStorage.setItem('username', this.state.username);
+          localStorage.setItem('password', this.state.password);
+          localStorage.setItem('command', this.state.command);
+
+          if (res.body || res.body.length > 0) {
+            const columns = [];
+            Object.keys(res.body.result[0]).map(k =>
+              res.body.columns.map(t =>
+                t.data.map(c =>
+                  c.COLUMN_NAME === k && columns.push({ name: c.COLUMN_NAME, title: `${c.COLUMN_TEXT} (${c.COLUMN_NAME})` })
+                )
+              )
+            );
+            console.log('columns:', columns);
+            console.log('data:', res.body.result);
+            this.setState({ columns, data: res.body.result });
+          } else console.log('No data returned');
+
         } else {
           console.error(`Error ${res.status}: ${res.body}`);
           new Notification('Error', { body: `${res.status}: ${res.body}` });
@@ -133,7 +152,7 @@ class Main extends Component {
 
   render() {
     const { classes } = this.props;
-    const { data, hostname, username, password, command, showPassword } = this.state;
+    const { columns, data, hostname, username, password, command, showPassword } = this.state;
     return (
       <div className={classes.root}>
         <Grid
@@ -146,7 +165,7 @@ class Main extends Component {
               <Grid
                 className={classes.header}
                 container
-                justify="center"
+                justify="space-between"
                 spacing={8}>
                 {!process.env.REACT_APP_SERVER_HOSTNAME &&
                   <Grid item>
@@ -236,7 +255,9 @@ class Main extends Component {
           <Grid item xs={12}>
             {data &&
               <Paper className={classes.paper}>
-                <Table data={data} />
+                <Table
+                  columns={columns}
+                  data={data} />
               </Paper>
             }
           </Grid>

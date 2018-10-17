@@ -38,9 +38,9 @@ const styles = theme => ({
     height: '100%'
   },
   export: {
-    position: 'absolute',
-    top: theme.spacing.unit * 1.2,
-    right: theme.spacing.unit * 2
+    position: 'fixed',
+    bottom: theme.spacing.unit * 1.4,
+    right: theme.spacing.unit * 1.4
   }
 });
 
@@ -62,7 +62,7 @@ class EnhancedTable extends Component {
     this.exportToCSV = this.exportToCSV.bind(this);
   }
 
-  componentDidUpdate=prevProps=> {
+  componentDidUpdate = prevProps => {
     if (this.props.data !== prevProps.data) {
       this.setState({ data: this.props.data });
     }
@@ -73,7 +73,7 @@ class EnhancedTable extends Component {
   changeCurrentPage = currentPage => this.setState({ currentPage });
   changePageSize = pageSize => this.setState({ pageSize });
 
-  exportToCSV=() => {
+  exportToCSV = () => {
     // dialog.showSaveDialog({ filters: [{ name: 'CSV', extensions: ['csv'] }] }, filename => {
     //   if (filename === undefined) {
     //     new Notification('No file selected');
@@ -104,9 +104,9 @@ class EnhancedTable extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, columns } = this.props;
     const {
-      data, columns, grouping, currentPage,
+      data, grouping, currentPage,
       pageSize, tableColumnExtensions, pageSizes,
       columnOrder
     } = this.state;
@@ -164,7 +164,7 @@ class EnhancedTable extends Component {
 EnhancedTable.propTypes = {
   classes: PropTypes.object.isRequired,
   loading: PropTypes.bool,
-  csv: PropTypes.array,
+  columns: PropTypes.array,
   data: PropTypes.array
 };
 
