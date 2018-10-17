@@ -1,4 +1,3 @@
-// import csvWrite from 'csv-writer';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -74,33 +73,28 @@ class EnhancedTable extends Component {
   changePageSize = pageSize => this.setState({ pageSize });
 
   exportToCSV = () => {
-    // dialog.showSaveDialog({ filters: [{ name: 'CSV', extensions: ['csv'] }] }, filename => {
-    //   if (filename === undefined) {
-    //     new Notification('No file selected');
-    //     console.log('No file selected');
-    //     return;
-    //   } else {
-    //     const header = [];
-    //     this.state.columns.map(c => header.push(c.title));
-    //     const records = this.state.data.map(obj => {
-    //       const arr = Array(header.length).fill('');
-    //       Object.keys(obj).map(key => {
-    //         const i = this.state.columns.findIndex(c => c.name === key);
-    //         if (i > -1) arr[i] = (obj[key]);
-    //       });
-    //       return arr;
-    //     });
-    //     const csvWriter = csvWrite.createArrayCsvWriter({
-    //       header,
-    //       path: filename
-    //     });
-    //     csvWriter.writeRecords(records)
-    //       .then(() => {
-    //         new Notification('Written to CSV', { body: `Saved to ${filename}` });
-    //         console.log('Written to CSV.');
-    //       });
-    //   }
-    // });
+    const header = [];
+    this.props.columns.map(c => header.push(c.title));
+    const records = [header, ...this.state.data.map(obj => {
+      const arr = Array(header.length).fill('');
+      Object.keys(obj).map(key => {
+        const i = this.props.columns.findIndex(c => c.name === key);
+        if (i > -1) arr[i] = (obj[key]);
+        return key;
+      });
+      return arr;
+    })];
+    console.log(records);
+    let csvContent = "data:text/csv;charset=utf-8,";
+    records.map(row => csvContent += row.join(',') + "\r\n");
+
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    console.log(encodedUri);
+    link.setAttribute('download', 'export.csv');
+    document.body.appendChild(link);
+    link.click();
   };
 
   render() {
