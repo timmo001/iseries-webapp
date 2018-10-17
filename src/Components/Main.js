@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import request from 'superagent';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -80,63 +79,47 @@ class Main extends Component {
   componentDidMount = () => this.handleValidation();
 
   sql = () => {
-    const apiUrl = `${process.env.REACT_APP_API_PROTOCOL ||
-      'http:'}//${process.env.REACT_APP_API_HOSTNAME ||
-      'localhost'}:${process.env.REACT_APP_API_PORT || '28365'}`;
+    const ws = new WebSocket(
+      `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${
+      process.env.REACT_APP_WS_URL || window.location.hostname}:${process.env.REACT_APP_WS_PORT || 28365}`
+    );
 
-    request
-      .post(`${apiUrl}/sql`)
-      .send({
+    ws.onopen = () => {
+      console.log("WebSocket connected");
+      this.setState({ connected: true });
+
+      localStorage.setItem('hostname', this.state.hostname);
+      localStorage.setItem('username', this.state.username);
+      localStorage.setItem('password', this.state.password);
+      localStorage.setItem('command', this.state.command);
+
+      ws.send(JSON.stringify({
+        request: 'sql',
         hostname: process.env.REACT_APP_SERVER_HOSTNAME || this.state.hostname,
         username: process.env.REACT_APP_SERVER_USERNAME || this.state.username,
         password: process.env.REACT_APP_SERVER_PASSWORD || this.state.password,
         command: this.state.command,
         get_columns: true
-      })
-      .retry(2)
-      .timeout({
-        response: 5000,
-        deadline: 30000,
-      })
-      .then(res => {
-        if (res.status === 200) {
-          localStorage.setItem('hostname', this.state.hostname);
-          localStorage.setItem('username', this.state.username);
-          localStorage.setItem('password', this.state.password);
-          localStorage.setItem('command', this.state.command);
+      }));
+    };
 
-          if (res.body || res.body.length > 0) {
-            const columns = [];
-            Object.keys(res.body.result[0]).map(k =>
-              res.body.columns.map(t =>
-                t.data.map(c =>
-                  c.COLUMN_NAME === k && columns.push({ name: c.COLUMN_NAME, title: `${c.COLUMN_TEXT} (${c.COLUMN_NAME})` })
-                )
+    ws.onmessage = (event) => {
+      const response = JSON.parse(event.data);
+      if (response.result || response.result.length > 0) {
+        if (response.columns) {
+          const columns = [];
+          Object.keys(response.result[0]).map(k =>
+            response.columns.map(t =>
+              t.data.map(c =>
+                c.COLUMN_NAME === k && columns.push({ name: c.COLUMN_NAME, title: `${c.COLUMN_TEXT} (${c.COLUMN_NAME})` })
               )
-            );
-            this.setState({ columns, data: res.body.result });
-          } else console.log('No data returned');
-
-        } else {
-          console.error(`Error ${res.status}: ${res.body}`);
-          new Notification('Error', { body: `${res.status}: ${res.body}` });
-          this.setState({ failed: true, error: `Error ${res.status}: ${res.body}\nCheck your credentials and try again` }, () =>
-            setTimeout(() => this.setState({ error: undefined }), 20000));
+            )
+          );
+          this.setState({ columns });
         }
-      })
-      .catch(err => {
-        if (err.response) {
-          console.error(`Error: ${err.status} - ${err.response.text}`);
-          new Notification('Error', { body: `${err.status} - ${err.response.text}` });
-          this.setState({ error: `Error: ${err.status} - ${err.response.text}` }, () =>
-            setTimeout(() => this.setState({ error: undefined }), 8000));
-        } else {
-          console.error(`Error: ${err.message} - Check your credentials and try again`);
-          new Notification('Error', { body: `${err.message}` });
-          this.setState({ error: `Error: ${err.message} - Check your credentials and try again` }, () =>
-            setTimeout(() => this.setState({ error: undefined }), 8000));
-        }
-      });
+        this.setState({ data: response.result });
+      } else console.log('No data returned');
+    };
   };
 
   handleMouseDownPassword = event => event.preventDefault();
