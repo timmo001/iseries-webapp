@@ -5,6 +5,7 @@ import request from 'superagent';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Table from './Table/Table';
 import IconButton from '@material-ui/core/IconButton';
@@ -56,6 +57,9 @@ const styles = theme => ({
   },
   header: {
     padding: `0 ${theme.spacing.unit * 2}px`
+  },
+  error: {
+    padding: theme.spacing.unit
   }
 });
 
@@ -72,6 +76,8 @@ class Main extends Component {
       success: false
     };
   }
+
+  componentDidMount = () => this.handleValidation();
 
   sql = () => {
     const apiUrl = `${process.env.REACT_APP_API_PROTOCOL ||
@@ -108,8 +114,6 @@ class Main extends Component {
                 )
               )
             );
-            console.log('columns:', columns);
-            console.log('data:', res.body.result);
             this.setState({ columns, data: res.body.result });
           } else console.log('No data returned');
 
@@ -148,6 +152,10 @@ class Main extends Component {
     if (!this.state.password) { this.setState({ invalid: 'No password!' }); return; }
     if (!this.state.hostname) { this.setState({ invalid: 'iSeries Host invalid!' }); return; }
     if (!this.state.command.toLowerCase().startsWith('select')) { this.setState({ invalid: 'Command must start with select' }); return; }
+    if (!this.state.command.includes('from')) { this.setState({ invalid: 'Command must contain a from statement' }); return; }
+    // if (!this.state.command.includes('.') || !this.state.command.includes('/')) {
+    //   this.setState({ invalid: 'Command must contain a set schema/library (MYSCHEMA.MYTABLE)' }); return;
+    // }
     this.setState({ invalid: undefined });
   };
 
@@ -245,12 +253,17 @@ class Main extends Component {
                   </FormControl>
                 </Grid>
                 <Grid item>
-                  <Button className={classes.button} variant="extendedFab" color="primary" onClick={this.sql} disabled={invalid}>
+                  <Button className={classes.button} variant="extendedFab" color="primary" onClick={this.sql} disabled={invalid !== undefined}>
                     <SendIcon />
                     Run
                   </Button>
                 </Grid>
               </Grid>
+              {invalid &&
+                <Typography color="error" className={classes.error}>
+                  {invalid}
+                </Typography>
+              }
             </Paper>
           </Grid>
           <Grid item xs={12}>
