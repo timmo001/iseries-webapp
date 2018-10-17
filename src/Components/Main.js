@@ -147,12 +147,13 @@ class Main extends Component {
     if (!this.state.username) { this.setState({ invalid: 'No username!' }); return; }
     if (!this.state.password) { this.setState({ invalid: 'No password!' }); return; }
     if (!this.state.hostname) { this.setState({ invalid: 'iSeries Host invalid!' }); return; }
+    if (!this.state.command.toLowerCase().startsWith('select')) { this.setState({ invalid: 'Command must start with select' }); return; }
     this.setState({ invalid: undefined });
   };
 
   render() {
     const { classes } = this.props;
-    const { columns, data, hostname, username, password, command, showPassword } = this.state;
+    const { columns, data, hostname, username, password, command, showPassword, invalid } = this.state;
     return (
       <div className={classes.root}>
         <Grid
@@ -244,7 +245,7 @@ class Main extends Component {
                   </FormControl>
                 </Grid>
                 <Grid item>
-                  <Button className={classes.button} variant="extendedFab" color="primary" onClick={this.sql}>
+                  <Button className={classes.button} variant="extendedFab" color="primary" onClick={this.sql} disabled={invalid}>
                     <SendIcon />
                     Run
                   </Button>
