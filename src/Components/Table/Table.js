@@ -86,7 +86,7 @@ class EnhancedTable extends Component {
     })];
     console.log(records);
     let csvContent = "data:text/csv;charset=utf-8,";
-    records.map(row => csvContent += row.join(',') + "\r\n");
+    records.map(row => csvContent += `"${row.join('","')}"\r\n`);
 
     var encodedUri = encodeURI(csvContent);
     var link = document.createElement('a');
