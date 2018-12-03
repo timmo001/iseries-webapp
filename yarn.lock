@@ -871,22 +871,22 @@
   resolved "https://registry.npmjs.org/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@devexpress/dx-core@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.npmjs.org/@devexpress/dx-core/-/dx-core-1.8.0.tgz#dda91b8b33e6e1c12d47d9e7b8809b7715442bfc"
-  integrity sha512-utlmeOAW//NJY/yng0U/ET8clIF5Mxw8gMfnzZj7NVZ6f9avkUwWerueuRjradwYlDnziddDR+qRfNbiKENcUQ==
+"@devexpress/dx-core@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-core/-/dx-core-1.9.0.tgz#25f666a15e185edd685920af3e8c306eeda0786e"
+  integrity sha512-Xrlg3Wy8LkW1HgrVchT4Lkryoi7MuyB6DRAQRcTwprrhag+cVvlydTrSWSQ7F0XO1Aqum8cD0GBBSo1wcqdUtg==
 
 "@devexpress/dx-grid-core@^1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@devexpress/dx-grid-core/-/dx-grid-core-1.9.0.tgz#40f12dc48ee5cc5d5be3140d23ff61e5c2b6ff31"
   integrity sha512-0XNcsOywSW5hN0KCtKGUlgYh8P+SMp5THkIgamgRy4uStakMfbAoie4PmLStpw0ZrqAL0vBBsiWSvyRercI5YA==
 
-"@devexpress/dx-react-core@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.npmjs.org/@devexpress/dx-react-core/-/dx-react-core-1.8.0.tgz#13d4d733fc78b85b716a4189474e8e78cff2da9c"
-  integrity sha512-GE1+nSlJY/uxMuFOYXeiSfHD6OG40zVtyH2//1Sn1k2724nzsegLnHpnkQdJ4vIIFbknRpxuZSfXXup5ze63Qw==
+"@devexpress/dx-react-core@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-core/-/dx-react-core-1.9.0.tgz#5b17b0959add43b8c4bdd4e02139d64f445a96e5"
+  integrity sha512-n/50cCukanx7ojqNw+Wc+ClwYtFEA9eQ439iZJWu1Z5HcTkoBV0TqLuD0oN+rG2AGuVSCje8gfOodXtO3oxqqw==
   dependencies:
-    "@devexpress/dx-core" "^1.8.0"
+    "@devexpress/dx-core" "^1.9.0"
     prop-types "^15.6.2"
 
 "@devexpress/dx-react-grid-material-ui@^1.8.0":
