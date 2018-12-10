@@ -889,10 +889,10 @@
     "@devexpress/dx-core" "^1.9.1"
     prop-types "^15.6.2"
 
-"@devexpress/dx-react-grid-material-ui@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.npmjs.org/@devexpress/dx-react-grid-material-ui/-/dx-react-grid-material-ui-1.8.0.tgz#9ffc191e9db5f785ded5644c7ff858f9578ef901"
-  integrity sha512-kLbS2RzGseHeGt0RUMbcIGEJsGCTCGFrNpMgcL8ieVGcEaUynfggqUvWfEfdIx79Eoh+v8QuTl/nCouN40Ne5w==
+"@devexpress/dx-react-grid-material-ui@^1.9.1":
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-grid-material-ui/-/dx-react-grid-material-ui-1.9.1.tgz#6e0b9d6433422b483bff3d4c4f1f4d46bac262ce"
+  integrity sha512-mKek5OkfH57T0/jzZVtCZsshUSaDwZzTG030exWF0tn2TDpAKtYdiJ54gbWavzilS/1s0RhOpP26NcQ+TNaK/w==
   dependencies:
     classnames "^2.2.6"
     prop-types "^15.6.2"
