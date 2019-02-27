@@ -959,10 +959,10 @@
   resolved "https://registry.yarnpkg.com/@devexpress/dx-core/-/dx-core-1.10.1.tgz#2b09b5123864f1eb0801580a7a0436d7f66ec0f9"
   integrity sha512-bblt9aQMeyuNrW8XOMi10dWpbPgYBDSLedd1VFZq+qHwAsaz/UPJzjqHf2QTQFcQ6GI2pdbbuaZnyhDFdKi5eg==
 
-"@devexpress/dx-grid-core@1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@devexpress/dx-grid-core/-/dx-grid-core-1.10.0.tgz#00f074ee26e693c1bdcc65fe1c31f2aa8f318d3c"
-  integrity sha512-ew0FXp649vU8kHHhRbr+i8gBMdaTiyjNjbRhtqNNYMygc4lUaxfczobr3fztCafVUPViPm9JWCp3XnqHx4VE4Q==
+"@devexpress/dx-grid-core@^1.10.3":
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-grid-core/-/dx-grid-core-1.10.3.tgz#6e0f781166bf199d5f7361a87c1417e6eb84d902"
+  integrity sha512-vifJfemL0XBTvnlWSNaPdtOgb8EKd6NGhDLl1Ei2FEetx1Zgy5TDZ2DT8Yc3BkLHnJXVxLQjH6dilyG3gOc5Rg==
 
 "@devexpress/dx-react-core@1.10.1":
   version "1.10.1"
@@ -980,13 +980,12 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@devexpress/dx-react-grid@1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-grid/-/dx-react-grid-1.10.0.tgz#eea6d0c6b54638731c097f6f01b3442095c873fa"
-  integrity sha512-igmq/25Mt/7PbTlsANjOvE2CZZxZIjPk/i+TBhmL9CqSEUgNxOg+4WO516AsDDDw0ktlUeahpHu5I5Y6HgaflQ==
+"@devexpress/dx-react-grid@1.10.3":
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-grid/-/dx-react-grid-1.10.3.tgz#84d363c52a57d47e3c4ef34d992997da1233626c"
+  integrity sha512-zlTGnE+0iWg49xXY5nNbNZG2AKe87dlZxR3DnJ5azrF/WY0NBDZ39lHCDIyex/vcIZZEeZsDnrOnlkYoSf64zQ==
   dependencies:
-    "@devexpress/dx-grid-core" "1.10.0"
-    prop-types "^15.6.2"
+    "@devexpress/dx-grid-core" "^1.10.3"
 
 "@material-ui/core@3.9.2":
   version "3.9.2"
