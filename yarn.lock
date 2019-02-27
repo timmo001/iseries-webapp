@@ -954,23 +954,23 @@
   resolved "https://registry.npmjs.org/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@devexpress/dx-core@^1.10.1":
-  version "1.10.1"
-  resolved "https://registry.yarnpkg.com/@devexpress/dx-core/-/dx-core-1.10.1.tgz#2b09b5123864f1eb0801580a7a0436d7f66ec0f9"
-  integrity sha512-bblt9aQMeyuNrW8XOMi10dWpbPgYBDSLedd1VFZq+qHwAsaz/UPJzjqHf2QTQFcQ6GI2pdbbuaZnyhDFdKi5eg==
+"@devexpress/dx-core@^1.10.3":
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-core/-/dx-core-1.10.3.tgz#906320b215e43519bee98c45d488125b83b7aa7c"
+  integrity sha512-IhjGdqq1vJUNbr4z3IN0VArQV6y3NvbxtNyofeULeeHQJTrGOmIZDyVMQUfDxdeqjEo6WTw7c5pT5+DcF7VMdg==
 
 "@devexpress/dx-grid-core@1.10.0":
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/@devexpress/dx-grid-core/-/dx-grid-core-1.10.0.tgz#00f074ee26e693c1bdcc65fe1c31f2aa8f318d3c"
   integrity sha512-ew0FXp649vU8kHHhRbr+i8gBMdaTiyjNjbRhtqNNYMygc4lUaxfczobr3fztCafVUPViPm9JWCp3XnqHx4VE4Q==
 
-"@devexpress/dx-react-core@1.10.1":
-  version "1.10.1"
-  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-core/-/dx-react-core-1.10.1.tgz#7655760ce4cce3b6adc7d6f6b13ff372e3276104"
-  integrity sha512-fttfupW2jOBBs2rNVo88hAsDxyz1+sj2+wC8zqEdh6rlbIgkJSyYDdv8HmtAIV0DMlBU3Zk7dc5Z/T7hGOSjkA==
+"@devexpress/dx-react-core@1.10.3":
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-core/-/dx-react-core-1.10.3.tgz#52df0f6fcfdbe843ad923f3598c254eae0e72faa"
+  integrity sha512-cWBhBgK0kNIuBogmRxf0rrLiJbjfpwc6+hKHyVTbkb6NwRMtWPlXSTVHyJK+YtJhQApgORYTF/OanP7WcYDyVg==
   dependencies:
-    "@devexpress/dx-core" "^1.10.1"
-    prop-types "^15.6.2"
+    "@devexpress/dx-core" "^1.10.3"
+    prop-types "^15.7.2"
 
 "@devexpress/dx-react-grid-material-ui@1.10.1":
   version "1.10.1"
@@ -8385,6 +8385,15 @@ prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
   dependencies:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
+
+prop-types@^15.7.2:
+  version "15.7.2"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
+  integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.8.1"
 
 property-information@^5.0.0, property-information@^5.0.1:
   version "5.0.1"
