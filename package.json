@@ -20,7 +20,7 @@
     "@material-ui/lab": "3.0.0-alpha.30",
     "@mdi/font": "3.4.93",
     "classnames": "2.2.6",
-    "csv-writer": "1.2.0",
+    "csv-writer": "1.3.0",
     "is-plain-obj": "1.1.0",
     "mock-socket": "8.0.5",
     "prop-types": "15.7.1",
